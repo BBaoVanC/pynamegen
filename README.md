@@ -144,4 +144,4 @@ Finished!
 
 ## License
 
-_PyNameGen_ is licensed under the GPLv3 license. For more information, please refer to [`LICENSE.txt`](https://github.com/BBaoVanC/NameGenerator/blob/master/LICENSE.txt)
+_PyNameGen_ is licensed under the GPLv3 license. For more information, please refer to [`LICENSE`](https://github.com/BBaoVanC/pynamegen/blob/master/LICENSE)
