@@ -38,14 +38,10 @@ jobs:
             pip list
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
-# workflows:
-#   version: 2
-#   circleci_python3.6:
-#     jobs:
-#       - python36
-#   circleci_python3.7:
-#     jobs:
-#       - python37
-#   circleci_python3.8:
-#     jobs:
-#       - python38
+workflows:
+  version: 2
+  circleci_python3:
+    jobs:
+      - python36
+      - python37
+      - python38
