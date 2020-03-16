@@ -9,6 +9,7 @@ jobs:
           command: |
             python3 -V
             pip install -e .
+            pip list
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
   python37:
@@ -21,6 +22,7 @@ jobs:
           command: |
             python3 -V
             pip install -e .
+            pip list
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
   python38:
@@ -33,6 +35,7 @@ jobs:
           command: |
             python3 -V
             pip install -e .
+            pip list
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
 workflows:
