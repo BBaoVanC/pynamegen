@@ -8,7 +8,7 @@ jobs:
           name: Python 3.6.9 CLI Test
           command: |
             python3 -V
-            pip install -e .
+            pip install --user -e .
             pip list
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
@@ -21,7 +21,7 @@ jobs:
           name: Python 3.7.7 CLI Test
           command: |
             python3 -V
-            pip install -e .
+            pip install --user -e .
             pip list
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
@@ -34,7 +34,7 @@ jobs:
           name: Python 3.8.2 CLI Test
           command: |
             python3 -V
-            pip install -e .
+            pip install --user -e .
             pip list
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
