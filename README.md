@@ -15,7 +15,7 @@ Robust CLI for [libnamegen](https://pypi.org/project/libnamegen/). Originally on
 
 Run the command `pip install pynamegen`. If you want to specify a specific Python version to use for pip, use a command such as `pip3` or `pip3.8`.
 
-PyNameGen requires the packages `libnamegen` and `libprogress`, but those will automatically be installed by pip.
+PyNameGen requires the packages [libnamegen](https://pypi.org/project/libnamegen/) and [libprogress](https://pypi.org/project/libprogress/), but those will automatically be installed by pip.
 
 ---
 
