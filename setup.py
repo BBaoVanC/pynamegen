@@ -20,8 +20,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-          'libprogress',
-          'libnamegen',
+          'libprogress<=3.0.1',
+          'libnamegen<=3.0.2',
     ],
     python_requires='>=3.6',
 )
