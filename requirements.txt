@@ -1,0 +1,2 @@
+libprogress<=3.0.1
+libnamegen<=3.0.2
