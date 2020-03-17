@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pynamegen",
-    version="3.0.1",
+    version="3.0.1.post1",
     author="BBaoVanC",
     author_email="bbaovanc@protonmail.com",
     description="PyNameGen is a CLI for libnamegen",
