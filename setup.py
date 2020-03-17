@@ -21,7 +21,7 @@ setuptools.setup(
     ],
     install_requires=[
           'libprogress<3.0.2',
-          'libnamegen<=3.0.2',
+          'libnamegen<3.0.3',
     ],
     python_requires='>=3.6',
 )
