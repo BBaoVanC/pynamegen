@@ -1,5 +1,7 @@
 # PyNameGen
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/903b0d1f184c4321ab4ef6fa53bd5c05)](https://app.codacy.com/manual/BBaoVanC/pynamegen?utm_source=github.com&utm_medium=referral&utm_content=BBaoVanC/pynamegen&utm_campaign=Badge_Grade_Dashboard)
+
 Robust CLI for [libnamegen](https://pypi.org/project/libnamegen/). Originally on my [NameGenerator](https://github.com/BBaoVanC/NameGenerator) project.
 
 ## Features
