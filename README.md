@@ -1,5 +1,17 @@
 # PyNameGen
 
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=BBaoVanC/pynamegen)](https://dependabot.com)
+[![CircleCI](https://circleci.com/gh/BBaoVanC/pynamegen/tree/master.svg?style=svg)](https://circleci.com/gh/BBaoVanC/pynamegen/tree/master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d8d75d1e33148d29c7224cdfb80749a)](https://www.codacy.com/manual/BBaoVanC/pynamegen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BBaoVanC/pynamegen&amp;utm_campaign=Badge_Grade)
+
+![PyPI](https://img.shields.io/pypi/v/pynamegen)
+![PyPI - License](https://img.shields.io/pypi/l/pynamegen)
+
+![GitHub issues](https://img.shields.io/github/issues-raw/BBaoVanC/pynamegen)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/BBaoVanC/pynamegen)
+![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/BBaoVanC/pynamegen)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/BBaoVanC/pynamegen)
+
 Robust CLI for [libnamegen](https://pypi.org/project/libnamegen/). Originally on my [NameGenerator](https://github.com/BBaoVanC/NameGenerator) project.
 
 ## Features
