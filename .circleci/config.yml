@@ -13,7 +13,7 @@ jobs:
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
             pynamegen debug=True file=surprise.txt method=surprise
-            pynamegen amt=1 debug=False file=stdout method=surprise | cowsay
+            pynamegen amt=1 debug=False file=stdout method=surprise
   python37:
     docker:
       - image: circleci/python:3.7.7
@@ -28,7 +28,7 @@ jobs:
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
             pynamegen debug=True file=surprise.txt method=surprise
-            pynamegen amt=1 debug=False file=stdout method=surprise | cowsay
+            pynamegen amt=1 debug=False file=stdout method=surprise
   python38:
     docker:
       - image: circleci/python:3.8.2
@@ -43,7 +43,7 @@ jobs:
             pynamegen debug=True file=classic.txt method=classic
             pynamegen debug=True file=random.txt method=random
             pynamegen debug=True file=surprise.txt method=surprise
-            pynamegen amt=1 debug=False file=stdout method=surprise | cowsay
+            pynamegen amt=1 debug=False file=stdout method=surprise
 workflows:
   version: 2
   circleci_python3:
