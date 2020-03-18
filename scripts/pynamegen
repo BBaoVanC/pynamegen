@@ -4,7 +4,7 @@ PyNameGen CLI.
 
 by BBaoVanC
 
-PyNameGen is a CLI for libnamegen.`
+PyNameGen is a CLI for libnamegen.
 Documentation is located at:
 https://github.com/BBaoVanC/PyNameGen
 
@@ -13,7 +13,10 @@ Copyright (C) 2020 BBaoVanC
 
 # Imports
 import sys
+import random
 import libprogress
+
+allmethods = ["classic", "random"]
 
 
 class ArgError(Exception):  # custom error for invalid arguments
@@ -22,12 +25,40 @@ class ArgError(Exception):  # custom error for invalid arguments
     pass
 
 
+def parsemethod(methodname):
+    """
+    Take a method name as input and output the library
+
+    Arguments:
+    methodname -- name of method in string form
+
+    Returns:
+    method -- variable containing the library class
+    """
+    if methodname == "classic":  # if method is 'classic'
+        import libnamegen.classic  # import the classic method
+        method = libnamegen.classic  # save this in argument list
+
+    elif methodname == "random":  # if method is 'random'
+        import libnamegen.random  # if method is the random gen
+        method = libnamegen.random  # save this in argument list
+
+    else:  # if none of the existing methods was selected
+        raise(ArgError("Arg for 'method' is invalid"))
+
+    return method
+
+
 helptxt = """Usage:
     pynamegen [options]
 Options:
     amt: Amount of names to generate
     debug: Whether or not to output debug information
-    method: Which name generation method to use
+    file: file to output generated names to. Set to
+          "stdout" (without quotes) to output to terminal instead of a file.
+          If you use "stdout", it's a good idea to set debug to False!
+    method: Which name generation method to use. Set to
+            "surprise" (without quotes) to choose one at random
 Example:
     pynamegen amt=50 debug=True file=mynames.txt method=classic"""
 # ^^^ this is the help menu text ^^^ #
@@ -40,6 +71,7 @@ args = {"amt": 100,  # default amount of names to generate
         }  # default arguments
 msel = False  # saves if the method has been selected
 gennames = True  # saves if names should be generated
+stdout = False  # saves if the names should be outputted to stdout
 for arg in cmdline:  # this block converts 'cmdline' to dictionary 'args'
     if arg in ["--help", "-h", "help"]:  # if one of the help options is used
         print(helptxt)  # print the help menu text
@@ -60,23 +92,28 @@ for arg in cmdline:  # this block converts 'cmdline' to dictionary 'args'
 
     elif arg.startswith("file="):  # if the selected argument is 'file'
         args["file"] = str(arg.split("=")[1])  # save this in argument list
+        if args["file"] == "stdout":  # if the files should be sent to terminal
+            stdout = True  # stdout mode True
 
     elif arg.startswith("method="):  # if the selected argument is 'method'
         msel = True  # note that the method has been selected
         b = arg.split("=")[1].lower()  # convert argument to lowercase
-        if b == "classic":  # if method is 'classic'
-            from libnamegen import classic  # import the classic method
-            args["method"] = classic  # save this in argument list
-        elif b == "random":  # if method is 'random'
-            from libnamegen import random  # if method is the random gen
-            args["method"] = random  # save this in argument list
-        else:  # if none of the existing methods was selected
+
+        if b == "surprise":  # if the method should be picked randomly
+            rmethod = random.choice(allmethods)  # nosec | pick random method
+            args["method"] = parsemethod(rmethod)  # get method class
+            if args["debug"]:  # if we should output debug information
+                print("Randomly selected method: " + rmethod)
+                # ^^^ tell what method was randomly selected
+        elif b not in allmethods:
             raise(ArgError("Arg for 'method' is invalid"))
+        else:
+            args["method"] = parsemethod(b)
 
 if gennames is True:  # if we should generate the names
     if not msel:  # if the method hasn't been selected
-        from libnamegen import classic  # import the classic method
-        args["method"] = classic  # save the method in argument list
+        import libnamegen.classic  # import the classic method
+        args["method"] = libnamegen.classic  # save the method in argument list
     if args["debug"]:  # if we should output debug information
         print("Generating names...")  # log message
     # use our function to generate names into the variable 'usernames'
@@ -84,35 +121,39 @@ if gennames is True:  # if we should generate the names
     usernames = args["method"].gen(count=args["amt"], debug=args["debug"])
     # ^^^ generate the names with the selected method and options ^^^ #
 
-    if args["debug"]:  # if we should output debug information
-        print("Preparing list to write to file", end="\r")  # log message
-
-    # vvv prepare a list for writing directly to the file vvv #
-    usernames2 = list()  # create new list named usernames2
-    for item in usernames:  # for each item in the username list
-        # add newline character to each item in the usernames2 list...
-        item = item + "\n"  # add a newline to the end of each name
-        usernames2.append(item)  # ...
-    usernames2[-1] = usernames2[-1].strip()  # remove newline from last item
-    if args["debug"]:  # if we should output debug information
-        print("Preparing list to write to file...done")  # log message
-
-    # vvv start making file vvv #
-        print("Opening file...")
-    # open the list of names. + means to create the file if it doesn't exist
-    file = open(args["file"], "w+")  # open the file in overwrite mode (w+)
-
-    wtotal = len(usernames2)  # save the total names in wtotal for progress log
-    if args["debug"]:  # if debug is enabled
-        print("Writing names...")
-    for indx, item in enumerate(usernames2):  # indx is the index
-        file.write(item)  # write each username to the file
+    if not stdout:  # if the names should be outputted to a file
         if args["debug"]:  # if we should output debug information
-            print(libprogress.genbar(curprg=indx+1, maxprg=wtotal), end="\r")
-            # ^^^ log message ^^^ #
-    if args["debug"]:  # if we should output debug information
-        print(libprogress.genfullbar(prg=wtotal))
-        print("Saving file...")  # log message
-    file.close()  # close the file and apply our changes
+            print("Preparing list to write to file", end="\r")  # log message
+
+        # vvv prepare a list for writing directly to the file vvv #
+        usernames2 = list()  # create new list named usernames2
+        for item in usernames:  # for each item in the username list
+            # add newline character to each item in the usernames2 list...
+            item = item + "\n"  # add a newline to the end of each name
+            usernames2.append(item)  # ...
+        usernames2[-1] = usernames2[-1].strip()  # remove \n from last name
+        if args["debug"]:  # if we should output debug information
+            print("Preparing list to write to file...done")  # log message
+
+        # vvv start making file vvv #
+        print("Opening file...")
+        # open the list of names. '+' will create the file if it doesn't exist
+        file = open(args["file"], "w+")  # open the file in overwrite mode (w+)
+
+        wtotal = len(usernames2)  # save the total amount of names in wtotal
+        if args["debug"]:  # if debug is enabled
+            print("Writing names...")
+        for indx, item in enumerate(usernames2):  # indx is the index
+            file.write(item)  # write each username to the file
+            if args["debug"]:  # if we should output debug information
+                print(libprogress.genbar(curprg=indx+1, maxprg=wtotal),
+                      end="\r")  # ^^^ log message ^^^ #
+        if args["debug"]:  # if we should output debug information
+            print(libprogress.genfullbar(prg=wtotal))
+            print("Saving file...")  # log message
+        file.close()  # close the file and apply our changes
+    else:
+        for name in usernames:
+            print(name)
     if args["debug"]:  # if we should output debug information
         print("Finished!")  # log message
