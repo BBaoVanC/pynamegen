@@ -140,10 +140,36 @@ The generation method `random` looks like 'XaYyaknkCoH8'.
 
 You can change the generation method used by using the argument 'method=[method]' and replace [method] with the correct method.
 
+``` plaintext
+$ pynamegen method=random
+Generating names...
+[####################] 100% [100/100]...done
+Preparing list to write to file...done
+Opening file...
+Writing names...
+[####################] 100% [100/100]...done
+Saving file...
+Finished!
+```
+
 If you choose `surprise` as the generation method, a generation method will be randomly selected.
 
 ``` plaintext
-$ pynamegen method=random
+$ pynamegen method=surprise
+Randomly selected method: classic
+Generating names...
+[####################] 100% [100/100]...done
+Preparing list to write to file...done
+Opening file...
+Writing names...
+[####################] 100% [100/100]...done
+Saving file...
+Finished!
+```
+
+``` plaintext
+$ pynamegen method=surprise
+Randomly selected method: random
 Generating names...
 [####################] 100% [100/100]...done
 Preparing list to write to file...done
