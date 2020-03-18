@@ -134,11 +134,13 @@ Saving file...
 Finished!
 ```
 
-The default name generation method is classic, and looks like 'TheAssignmentanatorifier_90'.
+The default name generation method is `classic`, and looks like 'TheAssignmentanatorifier_90'.
 
-The generation method random looks like 'XaYyaknkCoH8'.
+The generation method `random` looks like 'XaYyaknkCoH8'.
 
 You can change the generation method used by using the argument 'method=[method]' and replace [method] with the correct method.
+
+If you choose `surprise` as the generation method, a generation method will be randomly selected.
 
 ``` plaintext
 $ pynamegen method=random

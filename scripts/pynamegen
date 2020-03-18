@@ -4,7 +4,7 @@ PyNameGen CLI.
 
 by BBaoVanC
 
-PyNameGen is a CLI for libnamegen.`
+PyNameGen is a CLI for libnamegen.
 Documentation is located at:
 https://github.com/BBaoVanC/PyNameGen
 
@@ -13,7 +13,10 @@ Copyright (C) 2020 BBaoVanC
 
 # Imports
 import sys
+import random
 import libprogress
+
+allmethods = ["classic", "random"]
 
 
 class ArgError(Exception):  # custom error for invalid arguments
@@ -22,12 +25,37 @@ class ArgError(Exception):  # custom error for invalid arguments
     pass
 
 
+def parsemethod(methodname):
+    """
+    Take a method name as input and output the library
+
+    Arguments:
+    methodname -- name of method in string form
+
+    Returns:
+    method -- variable containing the library class
+    """
+    if methodname == "classic":  # if method is 'classic'
+        import libnamegen.classic  # import the classic method
+        method = libnamegen.classic  # save this in argument list
+
+    elif methodname == "random":  # if method is 'random'
+        import libnamegen.random  # if method is the random gen
+        method = libnamegen.random  # save this in argument list
+
+    else:  # if none of the existing methods was selected
+        raise(ArgError("Arg for 'method' is invalid"))
+
+    return method
+
+
 helptxt = """Usage:
     pynamegen [options]
 Options:
     amt: Amount of names to generate
     debug: Whether or not to output debug information
-    method: Which name generation method to use
+    method: Which name generation method to use. Set to
+            "surprise" (without quotes) to choose one at random
 Example:
     pynamegen amt=50 debug=True file=mynames.txt method=classic"""
 # ^^^ this is the help menu text ^^^ #
@@ -64,19 +92,19 @@ for arg in cmdline:  # this block converts 'cmdline' to dictionary 'args'
     elif arg.startswith("method="):  # if the selected argument is 'method'
         msel = True  # note that the method has been selected
         b = arg.split("=")[1].lower()  # convert argument to lowercase
-        if b == "classic":  # if method is 'classic'
-            from libnamegen import classic  # import the classic method
-            args["method"] = classic  # save this in argument list
-        elif b == "random":  # if method is 'random'
-            from libnamegen import random  # if method is the random gen
-            args["method"] = random  # save this in argument list
-        else:  # if none of the existing methods was selected
+
+        if b == "surprise":  # if the method should be picked randomly
+            rmethod = random.choice(allmethods)  # nosec | pick random method
+            args["method"] = parsemethod(rmethod)  # get method class
+        elif b not in allmethods:
             raise(ArgError("Arg for 'method' is invalid"))
+        else:
+            args["method"] = parsemethod(b)
 
 if gennames is True:  # if we should generate the names
     if not msel:  # if the method hasn't been selected
-        from libnamegen import classic  # import the classic method
-        args["method"] = classic  # save the method in argument list
+        import libnamegen.classic  # import the classic method
+        args["method"] = libnamegen.classic  # save the method in argument list
     if args["debug"]:  # if we should output debug information
         print("Generating names...")  # log message
     # use our function to generate names into the variable 'usernames'
