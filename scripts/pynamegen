@@ -96,6 +96,9 @@ for arg in cmdline:  # this block converts 'cmdline' to dictionary 'args'
         if b == "surprise":  # if the method should be picked randomly
             rmethod = random.choice(allmethods)  # nosec | pick random method
             args["method"] = parsemethod(rmethod)  # get method class
+            if args["debug"]:  # if we should output debug information
+                print("Randomly selected method: " + rmethod)
+                # ^^^ tell what method was randomly selected
         elif b not in allmethods:
             raise(ArgError("Arg for 'method' is invalid"))
         else:
