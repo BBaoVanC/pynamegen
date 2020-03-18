@@ -134,6 +134,35 @@ Saving file...
 Finished!
 ```
 
+You can also generates the names to terminal output by setting the filename to `stdout`. If you do so, make sure to set debug to False! This makes it easy to use the CLI as a way to send generated names to a program without using the Python API.
+
+Generate 5 names with the random method and output to terminal:
+
+``` plaintext
+$ pynamegen amt=5 method=random debug=False file=stdout
+Kc3HcV3pq_n0
+ncwUV_Twbx7s
+jYs56B1y_WxU
+YN5_cU6fhwXc
+SI46Rnp9skAo
+```
+
+The output for the above command will differ because the generated names will not be the same as in this example.
+
+The following example generates a name with the classic method and pipes it to the `cowsay` command (which just outputs text of a cow and a message box). You can pipe the generated name to any command; this is just an example.
+
+``` plaintext
+$ pynamegen amt=1 method=classic debug=False file=stdout | cowsay
+ _______________
+< Taleanator239 >
+ ---------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
 The default name generation method is `classic`, and looks like 'TheAssignmentanatorifier_90'.
 
 The generation method `random` looks like 'XaYyaknkCoH8'.
