@@ -153,9 +153,9 @@ The following example generates a name with the classic method and pipes it to t
 
 ``` plaintext
 $ pynamegen amt=1 method=classic debug=False file=stdout | cowsay
- _______________
-< Taleanator239 >
- ---------------
+ _______________________
+< TheCauliflowerguy_408 >
+ -----------------------
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\
