@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pynamegen",
-    version="3.1.1",
+    version="3.1.1.post1",
     author="BBaoVanC",
-    author_email="bbaovanc@protonmail.com",
+    author_email="pypi@bbaovanc.com",
     description="PyNameGen is a CLI for libnamegen",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/BBaoVanC/PyNameGen",
+    url="https://git.bbaovanc.com/bbaovanc/pynamegen",
     packages=setuptools.find_packages(),
     scripts=["scripts/pynamegen"],
     classifiers=[
@@ -23,5 +23,5 @@ setuptools.setup(
           'libprogress<3.0.2',
           'libnamegen<3.2.0',
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
 )
