@@ -1,0 +1,69 @@
+---
+kind: pipeline
+type: docker
+name: pypi_deploy
+
+steps:
+- name: pypi_publish
+  image: plugins/pypi
+  settings:
+    username:
+      from_secret: PYPI_USERNAME
+    password:
+      from_secret: PYPI_PASSWORD
+
+trigger:
+  event:
+  - tag
+
+---
+kind: pipeline
+type: docker
+name: python37
+
+steps:
+- name: run
+  image: python:3.7
+  commands:
+  - python --version
+  - pip --version
+  - echo "Installing pynamegen..."
+  - pip install -e .
+  - echo "List of installed packages:"
+  - pip list
+  - echo "Making citests directory for storing generated names"
+  - mkdir citests/
+  - echo "Testing classic method..."
+  - pynamegen debug=True file=citests/classic.txt method=classic
+  - echo "Testing random method..."
+  - pynamegen debug=True file=citests/random.txt method=random
+  - echo "Testing surprise method..."
+  - pynamegen debug=True file=citests/surprise.txt method=surprise
+  - echo "Testing terminal output mode..."
+  - pynamegen amt=1 debug=False file=stdout method=surprise
+
+---
+kind: pipeline
+type: docker
+name: python38
+
+steps:
+- name: run
+  image: python:3.8
+  commands:
+  - python --version
+  - pip --version
+  - echo "Installing pynamegen..."
+  - pip install -e .
+  - echo "List of installed packages:"
+  - pip list
+  - echo "Making citests directory for storing generated names"
+  - mkdir citests/
+  - echo "Testing classic method..."
+  - pynamegen debug=True file=citests/classic.txt method=classic
+  - echo "Testing random method..."
+  - pynamegen debug=True file=citests/random.txt method=random
+  - echo "Testing surprise method..."
+  - pynamegen debug=True file=citests/surprise.txt method=surprise
+  - echo "Testing terminal output mode..."
+  - pynamegen amt=1 debug=False file=stdout method=surprise
