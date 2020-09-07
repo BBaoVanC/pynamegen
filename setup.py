@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pynamegen",
-    version="3.1.1.post1",
+    version="3.1.2",
     author="BBaoVanC",
     author_email="pypi@bbaovanc.com",
     description="PyNameGen is a CLI for libnamegen",
@@ -20,8 +20,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-          'libprogress<3.0.2',
-          'libnamegen<3.2.0',
+          'libprogress<4',
+          'libnamegen<4',
     ],
     python_requires='>=3.7',
 )
