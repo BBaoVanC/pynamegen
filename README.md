@@ -12,7 +12,7 @@ Robust CLI for [libnamegen](https://pypi.org/project/libnamegen/). Originally on
 * Easy to use
 * CLI with simple arguments
 * Always tested before release
-* Supports latest three versions of Python 3
+* Officially supports latest two versions of Python 3
 
 ---
 
@@ -28,7 +28,7 @@ PyNameGen requires the packages [libnamegen](https://pypi.org/project/libnamegen
 
 **What versions of Python are compatible?**
 
-PyNameGen is built for Python 3. It is tested on the latest three versions on Python 3 by a few different continuous integration services.
+PyNameGen is built for Python 3. It is tested on the latest two versions on Python 3 via Drone CI.
 
 ---
 
