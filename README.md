@@ -1,16 +1,9 @@
 # PyNameGen
 
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=BBaoVanC/pynamegen)](https://dependabot.com)
-[![CircleCI](https://circleci.com/gh/BBaoVanC/pynamegen/tree/master.svg?style=svg)](https://circleci.com/gh/BBaoVanC/pynamegen/tree/master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d8d75d1e33148d29c7224cdfb80749a)](https://www.codacy.com/manual/BBaoVanC/pynamegen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BBaoVanC/pynamegen&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://drone.bbaovanc.com/api/badges/bbaovanc/pynamegen/status.svg)](https://drone.bbaovanc.com/bbaovanc/pynamegen)
 
 ![PyPI](https://img.shields.io/pypi/v/pynamegen)
 ![PyPI - License](https://img.shields.io/pypi/l/pynamegen)
-
-![GitHub issues](https://img.shields.io/github/issues-raw/BBaoVanC/pynamegen)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/BBaoVanC/pynamegen)
-![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/BBaoVanC/pynamegen)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/BBaoVanC/pynamegen)
 
 Robust CLI for [libnamegen](https://pypi.org/project/libnamegen/). Originally on my [NameGenerator](https://github.com/BBaoVanC/NameGenerator) project.
 
@@ -19,7 +12,7 @@ Robust CLI for [libnamegen](https://pypi.org/project/libnamegen/). Originally on
 * Easy to use
 * CLI with simple arguments
 * Always tested before release
-* Supports latest three versions of Python 3
+* Officially supports latest two versions of Python 3
 
 ---
 
@@ -35,7 +28,7 @@ PyNameGen requires the packages [libnamegen](https://pypi.org/project/libnamegen
 
 **What versions of Python are compatible?**
 
-PyNameGen is built for Python 3. It is tested on the latest three versions on Python 3 by a few different continuous integration services.
+PyNameGen is built for Python 3. It is tested on the latest two versions on Python 3 via Drone CI.
 
 ---
 
@@ -213,4 +206,4 @@ Finished!
 
 ## License
 
-_PyNameGen_ is licensed under the GPLv3 license. For more information, please refer to [`LICENSE`](https://github.com/BBaoVanC/pynamegen/blob/master/LICENSE)
+_PyNameGen_ is licensed under the GPLv3 license. For more information, please refer to [`LICENSE`](https://git.bbaovanc.com/bbaovanc/pynamegen/src/branch/master/LICENSE)
